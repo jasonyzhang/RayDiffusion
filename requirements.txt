@@ -1,0 +1,17 @@
+black
+einops
+imageio
+imageio-ffmpeg
+ipdb
+ipython
+isort
+jupyter
+jupyter_black
+matplotlib
+numpy
+scipy
+omegaconf
+opencv-python
+plotly
+scipy
+wandb

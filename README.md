@@ -19,6 +19,8 @@ Then, follow the directions to install Pytorch3D [here](https://github.com/faceb
 
 ## Run Demo
 
+Download the model weights from [Google Drive](https://drive.google.com/file/d/1anIKsm66zmDiFuo8Nmm1HupcitM6NY7e/view?usp=drive_link).
+
 Run ray diffusion with known bounding boxes (provided as a json):
 ```
 python demo.py  --model_dir models/co3d_diffusion --image_dir examples/robot/images \

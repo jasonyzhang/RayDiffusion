@@ -8,9 +8,9 @@ OUTPUT_DIR = "resources/co3d_results_processed"
 
 
 def process_images(input_dir, output_dir):
-    for image in glob(osp.join(input_dir, "*.png")):
+    for image in glob(osp.join(input_dir, "*.jpg")):
         output_image = osp.join(output_dir, osp.basename(image).replace(".png", ".jpg"))
-        cmd = ["convert", image, "-resize", "400x400", output_image]
+        cmd = ["convert", image, "-resize", "400x", output_image]
         print(" ".join(cmd))
         subprocess.call(cmd)
 
@@ -35,5 +35,5 @@ def process_videos(input_dir, output_dir):
 
 
 if __name__ == "__main__":
-    # process_images(INPUT_DIR, OUTPUT_DIR)
-    process_videos(INPUT_DIR, OUTPUT_DIR)
+    process_images(INPUT_DIR, OUTPUT_DIR)
+    # process_videos(INPUT_DIR, OUTPUT_DIR)

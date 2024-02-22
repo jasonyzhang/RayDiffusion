@@ -45,7 +45,7 @@ If you find this code helpful, please cite:
 
 ```
 @InProceedings{zhang2024raydiffusion,
-    title={Cameras as Rays: Sparse-view Pose Estimation via Ray Diffusion},
+    title={Cameras as Rays: Pose Estimation via Ray Diffusion},
     author={Zhang, Jason Y and Lin, Amy and Kumar, Moneish and Yang, Tzu-Hsuan and Ramanan, Deva and Tulsiani, Shubham},
     booktitle={International Conference on Learning Representations (ICLR)},
     year={2024}

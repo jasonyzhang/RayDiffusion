@@ -1,0 +1,241 @@
+body {
+    margin: 0 auto;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+}
+
+.full-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1100px;
+    text-align: center;
+    display: block;
+}
+
+.title {
+    font-size: 36px;
+    margin-top: 20px;
+    width: 90%;
+    display: inline-block;
+}
+
+.author {
+    width: 95%;
+    max-width: 250px;
+    font-size: 24px;
+    display: inline-block;
+}
+
+.affiliation {
+    font-size: 24px;
+    width: 95%;
+    max-width: 450px;
+    display: inline-block;
+}
+
+.links {
+    font-size: 24px;
+    width: 95%;
+    max-width: 150px;
+    display: inline-block;
+}
+
+.teaser {
+    width: 90%;
+    max-width: 800px;
+    display: inline-block;
+}
+
+.teaser img {
+    width: 100%;
+}
+
+.video-container {
+    position: relative;
+    overflow: hidden;
+    width: 80%;
+    padding-top: 45%;
+    /* Formula for 16:9 Aspect Ratio: width * 9 / 16 */
+    display: inline-block;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.paper-thumbnail {
+    margin: 0 auto;
+    width: 40%;
+    max-width: 320px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 2% 10% 4% 0;
+}
+
+.paper-info {
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+@media (max-width: 999px) {
+    .paper-thumbnail {
+        width: 60%;
+    }
+
+    .paper-info {
+        width: 80%;
+    }
+}
+
+
+p {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 24pt;
+    text-align: center;
+}
+
+h2 {
+    font-size: 20pt;
+    text-align: center;
+}
+
+h4 {
+    font-size: 16pt;
+    text-align: left;
+    line-height: 1.2;
+}
+
+h5 {
+    font-size: 12pt;
+    text-align: left;
+    line-height: 1.5;
+}
+
+/* div {
+    display: inline-block;
+} */
+
+hr {
+    border-top: 2px solid #4D4D4D;
+    width: 90%;
+    margin: auto;
+}
+
+pre {
+    overflow-x: auto;
+    text-align: left;
+    border: 1px solid grey;
+    border-radius: 3px;
+    background: #eeeeee;
+    padding: 5px 5px 5px 10px;
+    line-height: 1.2;
+    white-space: pre-wrap;
+}
+
+pre code {
+    text-align: left;
+    word-wrap: normal;
+    white-space: pre-wrap;
+    font-size: 16px;
+}
+
+a:link,
+a:visited {
+    color: #8D0016;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FF1447;
+}
+
+.layered-paper-big {
+    /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+        0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The top layer shadow */
+        5px 5px 0 0px #fff,
+        /* The second layer */
+        5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The second layer shadow */
+        10px 10px 0 0px #fff,
+        /* The third layer */
+        10px 10px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The third layer shadow */
+        15px 15px 0 0px #fff,
+        /* The fourth layer */
+        15px 15px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The fourth layer shadow */
+        20px 20px 0 0px #fff,
+        /* The fifth layer */
+        20px 20px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The fifth layer shadow */
+        25px 25px 0 0px #fff,
+        /* The fifth layer */
+        25px 25px 1px 1px rgba(0, 0, 0, 0.35);
+    /* The fifth layer shadow */
+    margin-left: 10px;
+    margin-right: 45px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: medium;
+}
+
+.square {
+    height: 10pt;
+    width: 10pt;
+    background-color: #FFF;
+    border-style: solid;
+    border-color: green;
+    border-width: 2pt;
+    font-size: 0;
+    display: inline-block;
+    margin-right: 5pt;
+}
+
+.slider-page {
+    background: rgba(240, 173, 173, 0.576) !important;
+    /* background-color: black !important; */
+}
+
+.div-half {
+    /* background-color: #fff; */
+    width: 300px;
+    height: 300px;
+    margin-bottom: 50px;
+}
+
+.flex-direction {
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: auto;
+}
+
+.model {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.border {
+    border: 1px solid rgba(128, 128, 128, 0.399);
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Cameras as Rays: Pose Estimation via Ray Diffusion</title>
+    <link rel="preload" as="video" type="video/mp4" href="resources/ray_diffusion_teaser.mp4" />
+	<meta property="og:image" content="https://jasonyzhang.com/RayDiffusion/resources/rays_cropped.gif"/>
+    <meta property="og:image:type" content="image/gif" />
+    <meta property="og:image:width" content="200" />
+    <meta property="og:image:height" content="146" />
+	<meta property="og:title" content="Cameras as Rays (ICLR 2024)" />
+	<meta property="og:description" content="TL;DR: We over-parameterize cameras as bundles of rays and propose a diffusion-based framework to predict this representations probabilistically." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./resources/bulma.min.css">
+    <link rel="stylesheet" href="./resources/bulma-carousel.min.css">
+
+    <!-- <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">google.load("jquery", "1.3.2");</script> -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./resources/style.css" media="screen"/>    
+    <!-- Add your Google Analytics tag here -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RX94FXJ34K"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RX94FXJ34K');
+    </script>
+
+</head>
+
+<body>
+<div class="full-container">
+    <div class="title">
+        Cameras as Rays: Pose Estimation via Ray Diffusion
+    </div>
+
+    <br>
+    <br>
+
+    <div class="author">
+        <a href="https://jasonyzhang.com/">Jason Y. Zhang</a>*
+    </div>
+    <div class="author">
+        <a href="https://amyxlase.github.io/">Amy Lin</a>*
+    </div>
+    <div class="author">
+        <a href="">Moneish Kumar</a>
+    </div>
+    <div class="author">
+        <a href="">Tzu-Hsuan Yang</a>
+    </div>
+    <div class="author">
+        <a href="https://www.cs.cmu.edu/~deva/">Deva Ramanan</a>
+    </div>
+    <div class="author">
+        <a href="https://shubhtuls.github.io/">Shubham Tulsiani</a>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="affiliation">Carnegie Mellon University</div>
+
+    <br>
+    <br>
+    <div class="affiliation">In ICLR 2024 (Oral)</div>
+
+    <br>
+    <br>
+
+    <div class="links"><a href="">[Paper]</a></div>
+    <div class="links"><a href="https://github.com/jasonyzhang/RayDiffusion">[Code]</a></div>
+
+    <br>
+    <br>
+    <div class="teaser">
+        <video autoplay loop muted playsinline width="100%">
+            <source src="resources/ray_diffusion_teaser.mp4"
+                type="video/mp4">
+        </video>
+        <br>
+        <i>
+            <b>Recovering Wide-baseline Camera Parameters by Denoising Rays.</b> 
+            Conditioned on several
+            sparsely sampled views of an object, our approach learns to denoise a set of
+            camera rays, parameterized using 6D Plucker coordinates consisting of 3D ray
+            moments and 3D ray directions. Here, we visualize the backward diffusion
+            process, denoising from randomly initialized rays. We then recover camera
+            intrinsics and extrinsics from the positions of the rays using least-squares 
+            optimization.
+        </i>
+    </div>
+
+    <br><br>
+    <hr>
+
+    <h1>Abstract</h1>
+    <p>
+        Estimating camera poses is a fundamental task for 3D reconstruction and remains challenging given sparse views (&lt;10). In contrast to existing approaches that pursue top-down prediction of global parametrizations of camera extrinsics, we propose a distributed representation of camera pose that treats a camera as a bundle of rays. This representation allows for a tight coupling with spatial image features improving pose precision. We observe that this representation is naturally suited for set-level level transformers and develop a regression-based approach that maps image patches to corresponding rays. To capture the inherent uncertainties in sparse-view pose inference, we adapt this approach to learn a denoising diffusion model which allows us to sample plausible modes while improving performance. Our proposed methods, both regression- and diffusion-based, demonstrate state-of-the-art performance on camera pose estimation on CO3D while generalizing to unseen object categories and in-the-wild captures.
+    </p>
+
+
+    
+    <br><br>
+    <hr>
+
+    <h1>Paper</h1>
+    <br>
+
+    <div class="paper-thumbnail">
+        <a href="https://arxiv.org">
+            <img class="layered-paper-big" width="100%" src="./resources/raydiffusion_thumb.jpg" alt="Paper thumbnail."/>
+        </a>
+    </div>
+    <div class="paper-info">
+        <h4>Cameras as Rays: Pose Estimation via Ray Diffusion</h4>
+        <h5>
+            Jason Y. Zhang*, Amy Lin*, Moneish Kumar, Tzu-Hsuan Yang, Deva Ramanan, and Shubham Tulsiani
+        </h5>
+        <pre><code>@InProceedings{zhang2024raydiffusion,
+    title={Cameras as Rays: Pose Estimation via Ray Diffusion},
+    author={Zhang, Jason Y and Lin, Amy and Kumar, Moneish and Yang, Tzu-Hsuan and Ramanan, Deva and Tulsiani, Shubham},
+    booktitle={International Conference on Learning Representations (ICLR)},
+    year={2024}
+}</code></pre>
+    </div>
+
+    <br><br><hr>
+
+    <h1>CO3D Results</h1>
+    <br>
+
+    <div class="container">
+        <div id="carousel-demo" class="carousel">
+            <div class="item-1"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/backpack_108_12854_22710_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/backpack_108_12854_22710_N8.png" width="100%"></img> </td></tr></table></div>
+            <div class="item-2"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/motorcycle_216_22798_47409_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/motorcycle_216_22798_47409_N8.png" width="100%"></img> </td></tr></table></div>
+            <div class="item-3"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/teddybear_187_20190_36737_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/teddybear_187_20190_36737_N8.png" width="100%"></img> </td></tr></table></div>
+            <div class="item-4"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/hydrant_147_16374_32167_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/hydrant_147_16374_32167_N8.png" width="100%"></img> </td></tr></table></div>
+            <div class="item-5"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/baseballbat_269_28610_56678_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/baseballbat_269_28610_56678_N8.png" width="100%"></img> </td></tr></table></div>
+            <div class="item-6"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/bicycle_196_21125_43621_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/bicycle_196_21125_43621_N8.png" width="100%"></img> </td></tr></table></div>
+            <div class="item-7"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/handbag_31_1278_3933_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/handbag_31_1278_3933_N8.png" width="100%"></img> </td></tr></table></div>
+            <div class="item-8"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/plant_160_17628_33564_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/plant_160_17628_33564_N8.png" width="100%"></img> </td></tr></table></div>
+            <div class="item-9"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/baseballglove_375_42446_85011_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/baseballglove_375_42446_85011_N8.png" width="100%"></img> </td></tr></table></div>
+            <div class="item-10"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/pizza_188_20357_39305_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/pizza_188_20357_39305_N8.png" width="100%"></img> </td></tr></table></div>
+            <div class="item-11"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/chair_187_20196_37207_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/chair_187_20196_37207_N8.png" width="100%"></img> </td></tr></table></div>
+            <div class="item-12"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/banana_434_61617_120791_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/banana_434_61617_120791_N8.png" width="100%"></img> </td></tr></table></div>
+            <div class="item-13"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/bench_167_18175_33897_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/bench_167_18175_33897_N8.png" width="100%"></img> </td></tr></table></div>
+            <div class="item-14"><table width="400px" class="border"><tr><td><video autoplay loop muted playsinline controls width="100%"><source src="resources/co3d_results/apple_189_20388_37651_N8.mp4" type="video/mp4"> </video> </td> </tr> <tr> <td> <img src="resources/co3d_results/apple_189_20388_37651_N8.png" width="100%"></img> </td></tr></table></div> 
+        </div>
+    </div>
+
+    <br><br><hr>
+    <h1>Code</h1>
+    <a href="https://github.com/jasonyzhang/RayDiffusion">
+        <img style="width:80%;" src="./resources/raydiffusion_overview.png"
+             alt="Model overview figure"/>
+    </a>
+    <br>
+    <a class="links" href="https://github.com/jasonyzhang/RayDiffusion">[GitHub]</a>
+
+    <br><br><hr>
+    <h1>Acknowledgements</h1>
+    <p>
+        This work was supported in part by the NSF GFRP (Grant No. DGE1745016), a CISCO gift award, and the Intelligence Advanced Research Projects Activity (IARPA) via Department of Interior/Interior Business Center (DOI/IBC) contract number 140D0423C0074. The U.S. Government is authorized to reproduce and distribute reprints for Governmental purposes notwithstanding any copyright annotation thereon. 
+        <a href="https://github.com/jasonyzhang/webpage-template">Webpage template</a>.
+    </p>
+
+    <br><br>
+</div>
+
+<script src="./resources/bulma-carousel.min.js"></script>
+        <script>
+            bulmaCarousel.attach('#carousel-demo', {
+                slidesToScroll: 1,
+                slidesToShow: 3,
+                autoplay: false,
+                loop: true,
+            });
+        </script>
+
+</body>
+
+</html>

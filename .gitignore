@@ -1,0 +1,4 @@
+node_modules
+.DS_Store
+ray_diffusion_renders
+.ipynb_checkpoints

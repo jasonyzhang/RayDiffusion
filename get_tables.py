@@ -12,7 +12,7 @@ TABLE_HTML = """<div class="item-{ind}"><table width="400px" class="border"><tr>
 
 
 def get_tables(directory, random_order=False):
-    images = sorted(glob(osp.join(directory, "*.png")))
+    images = sorted(glob(osp.join(directory, "*.jpg")))
     videos = sorted(glob(osp.join(directory, "*.mp4")))
     assert len(images) == len(videos)
     order = list(range(len(images)))

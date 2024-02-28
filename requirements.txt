@@ -1,7 +1,9 @@
 black
 einops
+fvcore
 imageio
 imageio-ffmpeg
+iopath
 ipdb
 ipython
 isort

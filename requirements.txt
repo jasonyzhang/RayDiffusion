@@ -16,4 +16,5 @@ omegaconf
 opencv-python
 plotly
 scipy
+timm
 wandb

@@ -1,8 +1,10 @@
 black
 dash
 einops
+fvcore
 imageio
 imageio-ffmpeg
+iopath
 ipdb
 ipython
 isort
@@ -16,4 +18,5 @@ omegaconf
 opencv-python
 plotly
 scipy
+timm
 wandb

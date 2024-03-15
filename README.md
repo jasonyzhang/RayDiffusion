@@ -1,6 +1,6 @@
 # Cameras as Rays
 
-[[`arXiv`](https://arxiv.org/abs/2305.04926)]
+[[`arXiv`](https://arxiv.org/abs/2402.14817)]
 [[`Project Page`](https://jasonyzhang.com/RayDiffusion/)]
 [[`Bibtex`](#citing-cameras-as-rays)]
 

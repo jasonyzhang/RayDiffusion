@@ -3,7 +3,7 @@
 [[`arXiv`](https://arxiv.org/abs/2402.14817)]
 [[`Project Page`](https://jasonyzhang.com/RayDiffusion/)]
 [[`Bibtex`](#citing-cameras-as-rays)]
-
+[[`Colab`](https://colab.research.google.com/drive/1dqp9qnFyHA71y3motSoJpJFBHZVftXzb?usp=sharing)]
 
 This repository contains code for "Cameras as Rays: Pose Estimation via Ray Diffusion" (ICLR 2024).
 

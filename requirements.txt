@@ -1,4 +1,5 @@
 black
+dash
 einops
 imageio
 imageio-ffmpeg
@@ -7,6 +8,7 @@ ipython
 isort
 jupyter
 jupyter_black
+jupyter-dash
 matplotlib
 numpy
 scipy

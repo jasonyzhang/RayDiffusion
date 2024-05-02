@@ -1,0 +1,10 @@
+[lint]
+ignore-init-module-imports = true
+unfixable = ["F401"]
+extend-select = ["I"]
+
+[lint.isort]
+known-first-party = ["ray_diffusion"]
+
+[lint.per-file-ignores]
+"__init__.py" = ["F401"]

@@ -1,7 +1,3 @@
-"""
-Re-implementation of Co3dDataset with more general bounding box crop augmentation
-(and new data split).
-"""
 import gzip
 import json
 import os.path as osp
@@ -19,43 +15,9 @@ from pytorch3d.renderer import FoVPerspectiveCameras, PerspectiveCameras
 from torch.utils.data import Dataset
 from torchvision import transforms
 
-HOSTNAME = socket.gethostname()
-
-if HOSTNAME in ["ender"]:
-    CO3D_ANNOTATION_DIR = "/data/ssd1/jason/co3d_v2_annotations_cropped"
-    CO3D_DIR = "/data/ssd1/jason/co3d_v2_cropped"
-elif HOSTNAME in [
-    "trinity-2-1",
-    "trinity-2-5",
-    "trinity-2-13",
-    "trinity-2-21",
-    "trinity-2-25",
-    "trinity-2-29",
-]:
-    # Note, trinity-2-5 only has backpack and hydrant
-    CO3D_DIR = "/ssd0/jasonzh2/co3d_v2_cropped"
-    CO3D_ANNOTATION_DIR = "/ssd0/jasonzh2/co3d_v2_annotations_cropped"
-elif "grogu" in HOSTNAME:
-    CO3D_ANNOTATION_DIR = "/grogu/user/amylin2/co3d_v2_annotations"
-    CO3D_DIR = "/grogu/datasets/co3d"
-elif HOSTNAME in ["autobot-1-18.eth", "trinity-0-32"]:
-    CO3D_DIR = "/scratch/jasonzh2/co3d_v2_cropped"
-    CO3D_ANNOTATION_DIR = "/scratch/jasonzh2/co3d_v2_annotations_cropped"
-
-
-if HOSTNAME == "ender":
-    order_path = "/data/ssd3/amyxlase/co3d_v2_random_order_{sample_num}/{category}.json"
-elif "trinity" in HOSTNAME:
-    order_path = "/home/jasonzh2/multiframe-relpose/data/co3d_v2_random_order_{sample_num}/{category}.json"
-elif "grogu" in HOSTNAME:
-    # order_path = "/home/jasonzh2/code/multiframe-relpose/output_new/co3d_v2_random_order_{sample_num}/{category}.json"
-    order_path = "/grogu/user/amylin2/co3d_random_order/co3d_v2_random_order_{sample_num}/{category}.json"
-elif "deckard" in HOSTNAME:
-    order_path = "/home/jason/relpose_release/data/co3d_v2_random_order_{sample_num}/{category}.json"
-else:
-    order_path = None
-    warnings.warn(f"No order path for {HOSTNAME}")
-
+CO3D_ANNOTATION_DIR = "data/co3d_annotations"
+CO3D_DIR = "data/co3d"
+CO3D_ORDER_PATH = "data/co3d_v2_random_order_{sample_num}/{category}.json"
 
 TRAINING_CATEGORIES = [
     "apple",
@@ -118,19 +80,6 @@ assert len(TRAINING_CATEGORIES) + len(TEST_CATEGORIES) == 51
 
 Image.MAX_IMAGE_PIXELS = None
 ImageFile.LOAD_TRUNCATED_IMAGES = True
-
-
-def full_scene_scale(batch):
-    cameras = FoVPerspectiveCameras(R=batch["R"], T=batch["T"], device="cuda")
-    cc = cameras.get_camera_center()
-    centroid = torch.mean(cc, dim=0)
-
-    diffs = cc - centroid
-    norms = torch.linalg.norm(diffs, dim=1)
-
-    furthest_index = torch.argmax(norms).item()
-    scale = norms[furthest_index].item()
-    return scale
 
 
 def square_bbox(bbox, padding=0.0, astype=None):
@@ -377,7 +326,9 @@ class Co3dDataset(Dataset):
 
         if self.sample_num is not None:
             with open(
-                order_path.format(sample_num=self.sample_num, category=self.category[0])
+                CO3D_ORDER_PATH.format(
+                    sample_num=self.sample_num, category=self.category[0]
+                )
             ) as f:
                 order = json.load(f)
             ids = order[sequence_name][:num_to_load]

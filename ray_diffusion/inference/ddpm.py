@@ -23,7 +23,7 @@ def inference_ddpm(
     clip_bounds_d=5,
     pred_x0=False,
     stop_iteration=-1,
-    beta_tilde=False,
+    use_beta_tilde=False,
     num_patches_x=16,
     num_patches_y=16,
     normalize_directions=True,
@@ -136,7 +136,7 @@ def inference_ddpm(
             else:
                 alpha_bar_tm1 = model.noise_scheduler.alphas_cumprod[t - 1]
             beta_t = model.noise_scheduler.betas[t]
-            if beta_tilde:
+            if use_beta_tilde:
                 sigma_t = (1 - alpha_bar_tm1) / (1 - alpha_bar_t) * beta_t
             else:
                 sigma_t = beta_t

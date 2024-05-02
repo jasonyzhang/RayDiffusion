@@ -9,11 +9,12 @@ data/
 external/
 infer/
 output*
-scripts/model*/
 scripts/*.sh
+scripts/model*/
 scripts/temp/
 src/
 taming/
+weights/
 wandb/
 
 *.log

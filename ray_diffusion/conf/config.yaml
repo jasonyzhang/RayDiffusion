@@ -32,8 +32,8 @@ model:
   num_patches_y: 16
   pred_direction_only: False
   depth: 16
-  num_images: 1
-  random_num_images: False
+  num_images: 8
+  random_num_images: True
   feature_extractor: dino
   append_ndc: True
   within_image: False

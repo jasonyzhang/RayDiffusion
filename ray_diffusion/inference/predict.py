@@ -1,6 +1,7 @@
 import ipdb  # noqa: F401
 import torch
 
+from ray_diffusion.eval.utils import n_to_np_rotations
 from ray_diffusion.inference.ddpm import inference_ddpm
 from ray_diffusion.utils.rays import (
     Rays,
@@ -20,7 +21,7 @@ def predict_cameras(
     num_patches_y=16,
     additional_timesteps=(),
     calculate_intrinsics=True,
-    beta_tilde=False,
+    use_beta_tilde=False,
     normalize_moments=True,
     rescale_noise="zero",
     use_regression=False,
@@ -59,7 +60,7 @@ def predict_cameras(
             num_patches_x=num_patches_x,
             num_patches_y=num_patches_y,
             pbar=pbar,
-            beta_tilde=beta_tilde,
+            use_beta_tilde=use_beta_tilde,
             normalize_moments=normalize_moments,
             rescale_noise=rescale_noise,
             max_num_images=max_num_images,

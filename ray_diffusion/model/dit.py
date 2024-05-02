@@ -7,6 +7,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 from timm.models.vision_transformer import Attention, Mlp, PatchEmbed
+
 from ray_diffusion.model.memory_efficient_attention import MEAttention
 
 
@@ -70,7 +71,7 @@ class DiTBlock(nn.Module):
         num_heads,
         mlp_ratio=4.0,
         use_xformers_attention=False,
-        **block_kwargs
+        **block_kwargs,
     ):
         super().__init__()
         self.norm1 = nn.LayerNorm(hidden_size, elementwise_affine=False, eps=1e-6)

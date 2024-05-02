@@ -8,6 +8,7 @@
 configs/dev
 data/
 external/
+models/
 infer/
 output*
 scripts/*.sh

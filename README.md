@@ -7,6 +7,11 @@
 
 This repository contains code for "Cameras as Rays: Pose Estimation via Ray Diffusion" (ICLR 2024).
 
+Clone the repository:
+```
+git clone --depth=1 --branch=main https://github.com/jasonyzhang/RayDiffusion.git
+```
+
 ## Setting up Environment
 
 We recommend using a conda environment to manage dependencies. Install a version of
@@ -30,6 +35,10 @@ If you are having trouble installing using the pre-built wheel, you can also try
 ## Run Demo
 
 Download the model weights from [Google Drive](https://drive.google.com/file/d/1anIKsm66zmDiFuo8Nmm1HupcitM6NY7e/view?usp=drive_link).
+```
+gdown https://drive.google.com/uc\?id\=1anIKsm66zmDiFuo8Nmm1HupcitM6NY7e
+unzip models.zip
+```
 
 Run ray diffusion with known bounding boxes (provided as a json):
 ```

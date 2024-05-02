@@ -108,7 +108,7 @@ def evaluate(
 
 def save_results(
     output_dir,
-    checkpoint=200000,
+    checkpoint=450000,
     category="hydrant",
     num_images=None,
     calculate_additional_timesteps=False,

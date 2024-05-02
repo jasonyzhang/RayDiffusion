@@ -27,6 +27,7 @@ def predict_cameras(
     use_regression=False,
     max_num_images=None,
     pbar=False,
+    return_rays=False,
 ):
     """
     Args:
@@ -75,20 +76,32 @@ def predict_cameras(
     )
 
     additional_predictions = []
+    additional_predictions_rays = []
     for t in additional_timesteps:
         if pred_x0:
             ray = pred_intermediate[t]
         else:
             ray = rays_intermediate[t]
+        ray = Rays.from_spatial(ray)[0]
         additional_predictions.append(
             ray_to_cam(
-                Rays.from_spatial(ray)[0],
+                ray,
                 crop_parameters,
                 num_patches_x=num_patches_x,
                 num_patches_y=num_patches_y,
             )
         )
-    return pred_cam, additional_predictions
+        if return_rays:
+            additional_predictions_rays.append(ray)
+    if return_rays:
+        return (
+            pred_cam,
+            Rays.from_spatial(rays_final)[0],
+            additional_predictions,
+            additional_predictions_rays,
+        )
+    else:
+        return pred_cam, additional_predictions
 
 
 def inference_regression(

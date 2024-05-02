@@ -1,12 +1,16 @@
 black
+dash
 einops
+fvcore
 imageio
 imageio-ffmpeg
+iopath
 ipdb
 ipython
 isort
 jupyter
 jupyter_black
+jupyter-dash
 matplotlib
 numpy
 ruff
@@ -15,4 +19,5 @@ omegaconf
 opencv-python
 plotly
 scipy
+timm
 wandb

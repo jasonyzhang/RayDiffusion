@@ -8,8 +8,6 @@ import torch
 import torch.nn as nn
 from timm.models.vision_transformer import Attention, Mlp, PatchEmbed
 
-from ray_diffusion.model.memory_efficient_attention import MEAttention
-
 
 def modulate(x, shift, scale):
     return x * (1 + scale.unsqueeze(1)) + shift.unsqueeze(1)
@@ -75,7 +73,12 @@ class DiTBlock(nn.Module):
     ):
         super().__init__()
         self.norm1 = nn.LayerNorm(hidden_size, elementwise_affine=False, eps=1e-6)
-        attn = MEAttention if use_xformers_attention else Attention
+        if use_xformers_attention:
+            from ray_diffusion.model.memory_efficient_attention import MEAttention
+
+            attn = MEAttention
+        else:
+            attn = Attention
         self.attn = attn(
             hidden_size, num_heads=num_heads, qkv_bias=True, **block_kwargs
         )

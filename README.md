@@ -58,9 +58,13 @@ python demo.py  --model_dir models/co3d_regression --image_dir examples/robot/im
     --bbox_path examples/robot/bboxes.json --output_path robot.html
 ```
 
+## Evaluation
+
+See [eval.md](eval.md) for instructions on how to run evaluation code.
+
 ## Code release status
 - [x] Demo Code
-- [ ] Evaluation Code
+- [x] Evaluation Code
 - [ ] Training Code
 
 

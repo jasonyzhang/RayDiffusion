@@ -26,7 +26,6 @@ def evaluate(
     use_pbar=True,
     calculate_intrinsics=False,
     additional_timesteps=(),
-    use_ddim=False,
     use_beta_tilde=False,
     normalize_moments=True,
     rescale_noise="zero",
@@ -56,7 +55,6 @@ def evaluate(
             num_patches_y=cfg.model.num_patches_y,
             additional_timesteps=additional_timesteps,
             calculate_intrinsics=calculate_intrinsics,
-            use_ddim=use_ddim,
             use_beta_tilde=use_beta_tilde,
             normalize_moments=normalize_moments,
             rescale_noise=rescale_noise,
@@ -116,8 +114,7 @@ def save_results(
     split="test",
     force=False,
     sample_num=1,
-    use_ddim=False,
-    beta_tilde=False,
+    use_beta_tilde=False,
     normalize_moments=False,
     rescale_noise="square_root",
     max_num_images=None,
@@ -156,7 +153,6 @@ def save_results(
         num_images=num_images,
         apply_augmentation=True,
         sample_num=None if split == "train" else sample_num,
-        use_global_intrinsics=cfg.dataset.use_global_intrinsics,
     )
     print(f"Category {category} {len(dataset)}")
 
@@ -173,8 +169,7 @@ def save_results(
         device=device,
         calculate_intrinsics=calculate_intrinsics,
         additional_timesteps=additional_timesteps,
-        use_ddim=use_ddim,
-        beta_tilde=beta_tilde,
+        use_beta_tilde=use_beta_tilde,
         normalize_moments=normalize_moments,
         rescale_noise=rescale_noise,
         max_num_images=max_num_images,

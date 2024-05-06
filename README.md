@@ -58,14 +58,19 @@ python demo.py  --model_dir models/co3d_regression --image_dir examples/robot/im
     --bbox_path examples/robot/bboxes.json --output_path robot.html
 ```
 
+## Training
+
+Training command for ray diffusion:
+```
+accelerate launch --multi_gpu --gpu_ids 0,1,2,3,4,5,6,7 --num_processes 8 train.py \
+    training.batch_size=8 training.max_iterations=450000
+```
+
+See [docs/train.md](docs/train.md) for more detailed instructions on training.
+
 ## Evaluation
 
-See [eval.md](eval.md) for instructions on how to run evaluation code.
-
-## Code release status
-- [x] Demo Code
-- [x] Evaluation Code
-- [ ] Training Code
+See [docs/eval.md](docs/eval.md) for instructions on how to run evaluation code.
 
 
 ## Citing Cameras as Rays

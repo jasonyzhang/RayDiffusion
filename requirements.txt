@@ -2,6 +2,7 @@ black
 dash
 einops
 fvcore
+hydra-core
 imageio
 imageio-ffmpeg
 iopath

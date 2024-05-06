@@ -2,22 +2,23 @@ import gzip
 import json
 import os.path as osp
 import random
-import socket
 import time
-import warnings
 
 import ipdb  # noqa: F401
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
 from PIL import Image, ImageFile
-from pytorch3d.renderer import FoVPerspectiveCameras, PerspectiveCameras
+from pytorch3d.renderer import PerspectiveCameras
 from torch.utils.data import Dataset
 from torchvision import transforms
 
-CO3D_ANNOTATION_DIR = "data/co3d_annotations"
-CO3D_DIR = "data/co3d"
-CO3D_ORDER_PATH = "data/co3d_v2_random_order_{sample_num}/{category}.json"
+CO3D_DATA_DIR = "../co3d_data"  # update this
+CO3D_ANNOTATION_DIR = osp.join(CO3D_DATA_DIR, "co3d_annotations")
+CO3D_DIR = osp.join(CO3D_DATA_DIR, "co3d")
+CO3D_ORDER_PATH = osp.join(
+    CO3D_DATA_DIR, "/co3d_v2_random_order_{sample_num}/{category}.json"
+)
 
 TRAINING_CATEGORIES = [
     "apple",

@@ -65,7 +65,7 @@ See [eval.md](eval.md) for instructions on how to run evaluation code.
 ## Code release status
 - [x] Demo Code
 - [x] Evaluation Code
-- [ ] Training Code
+- [ ] Training Code (available on dev branch, but not yet fully tested)
 
 
 ## Citing Cameras as Rays

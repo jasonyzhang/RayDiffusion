@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 from PIL import Image
+from pytorch3d.renderer import PerspectiveCameras
+from pytorch3d.vis.plotly_vis import plot_scene
 
 from ray_diffusion.inference.ddpm import inference_ddpm
 from ray_diffusion.utils.rays import (
@@ -16,10 +18,6 @@ from ray_diffusion.utils.rays import (
     rays_to_cameras,
     rays_to_cameras_homography,
 )
-
-from pytorch3d.renderer import PerspectiveCameras
-from pytorch3d.vis.plotly_vis import plot_scene
-
 
 cmap = plt.get_cmap("hsv")
 

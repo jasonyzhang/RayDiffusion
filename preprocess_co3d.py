@@ -15,7 +15,6 @@ Usage:
 import argparse
 import gzip
 import json
-import os
 import os.path as osp
 from glob import glob
 

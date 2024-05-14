@@ -16,18 +16,18 @@ import ipdb  # noqa: F401
 import numpy as np
 import omegaconf
 import torch
-import wandb
 from accelerate import Accelerator
 from pytorch3d.renderer import PerspectiveCameras
 
+import wandb
 from ray_diffusion.dataset.co3d_v2 import Co3dDataset
 from ray_diffusion.model.diffuser import RayDiffuser
 from ray_diffusion.model.scheduler import NoiseScheduler
 from ray_diffusion.utils.normalize import normalize_cameras_batch
 from ray_diffusion.utils.rays import cameras_to_rays
 from ray_diffusion.utils.visualization import (
-    create_training_visualizations,
     create_plotly_cameras_visualization,
+    create_training_visualizations,
 )
 
 os.umask(000)  # Default to 777 permissions

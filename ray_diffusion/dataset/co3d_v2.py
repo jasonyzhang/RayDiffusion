@@ -17,7 +17,7 @@ CO3D_DATA_DIR = "../co3d_data"  # update this
 CO3D_ANNOTATION_DIR = osp.join(CO3D_DATA_DIR, "co3d_annotations")
 CO3D_DIR = osp.join(CO3D_DATA_DIR, "co3d")
 CO3D_ORDER_PATH = osp.join(
-    CO3D_DATA_DIR, "/co3d_v2_random_order_{sample_num}/{category}.json"
+    CO3D_DATA_DIR, "co3d_v2_random_order_{sample_num}/{category}.json"
 )
 
 TRAINING_CATEGORIES = [

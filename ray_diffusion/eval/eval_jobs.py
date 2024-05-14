@@ -43,7 +43,7 @@ def evaluate_ray_regression(eval_path):
     }
     keys, values = zip(*JOB_PARAMS.items())
     job_configs = [dict(zip(keys, p)) for p in itertools.product(*values)]
-    for job_config in tqdm(job_configs):
+    for job_config in tqdm(job_configs[::-1]):
         # You may want to parallelize these jobs here, e.g. with submitit.
         save_results(**job_config)
 
@@ -108,9 +108,9 @@ def process_predictions(eval_path, pred_index):
             )
 
         all_seen_acc_R.append(np.mean(seen_acc_R))
-        all_seen_acc_CC.append(np.mean(seen_acc_R))
+        all_seen_acc_CC.append(np.mean(seen_acc_CC))
         all_unseen_acc_R.append(np.mean(unseen_acc_R))
-        all_unseen_acc_CC.append(np.mean(unseen_acc_R))
+        all_unseen_acc_CC.append(np.mean(unseen_acc_CC))
 
     print("N=       ", " ".join(f"{i: 5}" for i in range(2, 9)))
     print("Seen R   ", " ".join([f"{x:0.3f}" for x in all_seen_acc_R]))

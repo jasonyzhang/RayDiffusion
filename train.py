@@ -35,6 +35,7 @@ os.umask(000)  # Default to 777 permissions
 
 class Trainer(object):
     def __init__(self, cfg):
+        print("config", cfg)
         seed = cfg.training.seed
         torch.manual_seed(seed)
         np.random.seed(seed)
@@ -333,12 +334,6 @@ class Trainer(object):
 
                     if self.iteration % self.interval_delete_checkpoint == 0:
                         self.clear_old_checkpoints(self.checkpoint_dir)
-
-                    # if (
-                    #     self.iteration % self.interval_evaluate == 0
-                    #     and self.iteration > 0
-                    # ):
-                    #     self.evaluate_train_acc()
 
                     if self.iteration >= self.max_iterations + 1:
                         if self.delete_all:

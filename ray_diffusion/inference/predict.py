@@ -1,7 +1,6 @@
 import ipdb  # noqa: F401
 import torch
 
-from ray_diffusion.eval.utils import n_to_np_rotations
 from ray_diffusion.inference.ddpm import inference_ddpm
 from ray_diffusion.utils.rays import (
     Rays,

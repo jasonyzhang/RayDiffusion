@@ -168,3 +168,30 @@ def first_camera_transform(cameras, rotation_only=True):
     new_cameras.T = new_transform.get_matrix()[:, 3, :3]
 
     return new_cameras
+
+
+def get_identity_cameras_with_intrinsics(cameras):
+    D = len(cameras)
+    device = cameras.R.device
+
+    new_cameras = cameras.clone()
+    new_cameras.R = torch.eye(3, device=device).unsqueeze(0).repeat((D, 1, 1))
+    new_cameras.T = torch.zeros((D, 3), device=device)
+
+    return new_cameras
+
+
+def normalize_cameras_batch(cameras, scale=1.0, normalize_first_camera=False):
+    new_cameras = []
+    undo_transforms = []
+    for cam in cameras:
+        if normalize_first_camera:
+            # Normalize cameras such that first camera is identity and origin is at
+            # first camera center.
+            normalized_cameras = first_camera_transform(cam, rotation_only=False)
+            undo_transform = None
+        else:
+            normalized_cameras, undo_transform = normalize_cameras(cam, scale=scale)
+        new_cameras.append(normalized_cameras)
+        undo_transforms.append(undo_transform)
+    return new_cameras, undo_transforms

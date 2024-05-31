@@ -9,8 +9,8 @@ training:
   lr: 1e-4
   mixed_precision: True
   matmul_precision: high 
-  max_iterations: 100000
-  batch_size: 64
+  max_iterations: 300000
+  batch_size: 8
   num_workers: 8
   gpu_id: 0
   freeze_encoder: True
@@ -18,25 +18,20 @@ training:
   job_key: ""  # Use this for submitit sweeps where timestamps might collide
   translation_scale: 1.0
   regression: False
-  prob_unconditional: 0
   load_extra_cameras: True
   calculate_intrinsics: False
   normalize_first_camera: False
-  unit_normalize_moments: False
 
 model:
-  pred_x0: False
-  reweight_eps_loss: False
+  pred_x0: True
   model_type: dit
   num_patches_x: 16
   num_patches_y: 16
-  pred_direction_only: False
   depth: 16
   num_images: 8
   random_num_images: True
   feature_extractor: dino
   append_ndc: True
-  within_image: False
 
 noise_scheduler:
   type: linear
@@ -46,12 +41,13 @@ noise_scheduler:
 
 dataset:
   name: co3d
-  category: ""
+  category: "all_train"
   apply_augmentation: True
 
 debug:
   wandb: True
-  project_name: ray_diffusion
+  project_name: cameras_as_rays_github
+  anomaly_detection: False
 
 hydra:
   run:
